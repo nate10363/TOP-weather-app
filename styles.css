@@ -18,6 +18,7 @@ h1 {
 
 #master-container {
     width: 50vw;
+    margin-bottom: 20px;
 }
 
 #location-container, #temp-feels-div, #weather-div, #condition-vis-div {

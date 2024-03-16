@@ -2,6 +2,10 @@
 const apiKeyWeather = 'd5f3744de08f4059ac9144557241603';
 const urlWeather = `https://api.weatherapi.com/v1/current.json?key=${apiKeyWeather}&q=`;
 
+const apiKeyGiphy = 'cljvcYEvI1Fx8iinuMMugnJDit9v6JeF';
+const urlGiphy = `https://api.giphy.com/v1/gifs/translate?api_key=${apiKeyGiphy}&s=`;
+const giphyImg = document.getElementById('giphy-img');
+
 const searchInput = document.getElementById('search-input');
 const searchBtn = document.getElementById('search-btn');
 
@@ -23,6 +27,13 @@ const vis = document.getElementById('vis');
 const toggleUnitsBtn = document.getElementById('toggle-units-btn');
 
 //   conditionImg.src = item.current.condition.icon.slice(2, item.current.condition.icon.length);
+
+async function getGiphy(val) {
+  const response = await fetch(urlGiphy + val, { mode: 'cors' });
+  response.json().then((item) => {
+    giphyImg.src = item.data.images.original.url;
+  }).catch((err) => { console.error(err); });
+}
 
 async function getWeather(searchVal) {
   const response = await fetch(urlWeather + searchVal.toLowerCase().split(' ').join('-'));
@@ -47,6 +58,9 @@ async function getWeather(searchVal) {
       vis.textContent = `Visibility: ${item.current.vis_km} km`;
 
       toggleUnitsBtn.style.display = 'block';
+
+      getGiphy(item.current.condition.text.toLowerCase().split(' ').join('-'));
+
       // eslint-disable-next-line func-names
       toggleUnitsBtn.onclick = function () {
         // eslint-disable-next-line eqeqeq
@@ -89,12 +103,10 @@ async function getWeather(searchVal) {
       vis.textContent = '';
 
       toggleUnitsBtn.style.display = 'none';
+
+      getGiphy('error');
     });
 }
-
-// toggleUnitsBtn.addEventListener('click', () => {
-//   temp.textContent = 'helping';
-// });
 
 searchBtn.addEventListener('click', () => {
   getWeather(searchInput.value);
@@ -102,7 +114,6 @@ searchBtn.addEventListener('click', () => {
 });
 
 searchInput.addEventListener('keydown', (e) => {
-//   console.log(e.target.value);
   if (e.key === 'Enter') {
     getWeather(searchInput.value);
     searchInput.value = '';
