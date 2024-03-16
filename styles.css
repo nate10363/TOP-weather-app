@@ -1,0 +1,43 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    color: #000040;
+    text-align: center;
+}
+
+#search-input {
+    border: none;
+    border-bottom: 1px solid gray;
+    width: 400px;
+    text-align: center;
+}
+
+#master-container {
+    width: 50vw;
+}
+
+#location-container, #temp-feels-div, #weather-div, #condition-vis-div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#toggle-units-btn {
+    display: none;
+    margin: 0 auto;
+}
+
+button {
+    cursor: pointer;
+    background-color: white;
+    border: 2px solid #000040;
+    border-radius: 10px;
+    height: 30px;
+    width: 120px;
+    font-size: 15px;
+}

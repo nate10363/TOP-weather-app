@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Search for the outside conditions from the warmth of the inside</h1>
+    <input type="text" id="search-input" placeholder="Enter City"><br>
+    <button id="search-btn">Search</button>
+    <div id="master-container">
+        <div id="location-container">
+            <h2 id="city-title"></h2>
+            <div id="region-country-div">
+                <h3 id="region-title"></h3>
+                <h3 id="country-title"></h3>
+            </div>
+        </div>
+        <div id="weather-container">
+            <div id="temp-feels-div">
+                <p class="weather-para" id="temp"></p>
+                <p class="weather-para" id="feels-like"></p>
+            </div>
+            <!-- <img src="#" id="condition-img"> -->
+            <div id="condition-vis-div">
+                <p class="weather-para" id="condition"></p>
+                <p class="weather-para" id="vis"></p>
+            </div>
+            <p class="weather-para" id="uv"></p>
+            <div id="weather-div">
+                <p class="weather-para" id="wind-dir"></p>
+                <p class="weather-para" id="wind"></p>
+            </div>
+            <p class="weather-para" id="precip"></p>
+        </div>
+        <button id="toggle-units-btn">View Imperial</button>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+</html>
